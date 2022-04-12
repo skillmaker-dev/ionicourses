@@ -10,7 +10,10 @@ export class LoginPage implements OnInit {
 
   constructor(
     public authService: AuthService
-  ) { }
+  ) {
+
+
+  }
 
   ngOnInit() {
   }

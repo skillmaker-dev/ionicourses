@@ -1,7 +1,8 @@
-
+import { initializeApp } from 'firebase/app';
+import { getFirestore } from 'firebase/firestore';
 export const environment = {
   production: false,
-  firebaseConfig : {
+  firebaseConfig: {
     apiKey: "AIzaSyBomAGTZ-qd5dNrohZmgDqSCO9uO3J1Fdc",
     authDomain: "ionic-project-e8ae9.firebaseapp.com",
     projectId: "ionic-project-e8ae9",
@@ -10,4 +11,5 @@ export const environment = {
     appId: "1:394998190280:web:cbcbce0219cf3c9e9595fd"
   }
 };
-
+initializeApp(environment.firebaseConfig);
+export const db = getFirestore();

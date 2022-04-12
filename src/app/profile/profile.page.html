@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>profile</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <div class="user-data">
+    <h1>User Data</h1>
+    <p>ID: <strong>{{authService.userData.uid}}</strong></p>
+    <p>Email: <strong>{{authService.userData.email}}</strong></p>
+    <p>
+      Email is Verified: <strong>{{authService.userData.emailVerified}}</strong>
+    </p>
+  </div>
+</ion-content>

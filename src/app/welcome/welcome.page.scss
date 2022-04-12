@@ -1,0 +1,18 @@
+.welcome-text {
+  text-align: center;
+  font-size: 3rem;
+  font-weight: bolder;
+  color: #fff;
+  width: 70%;
+}
+
+.page-container {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url("../../assets/welcome-photo.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+}

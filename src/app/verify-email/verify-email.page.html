@@ -1,0 +1,22 @@
+<div>
+  <div>
+    <div>
+      <h3>Thank You for Registering in IoniCourses</h3>
+      <div *ngIf="authService.userData as user">
+        <p>We have sent a confirmation email to <b>{{user.email}}</b>.</p>
+        <p>Please check your email to verfiy your account.</p>
+      </div>
+
+      <div>
+        <ion-button size="small" (click)="authService.SendVerificationMail()"
+          >Resend Verification Email</ion-button
+        >
+      </div>
+    </div>
+    <div>
+      <ion-button size="small" color="success" routerLink="/login">
+        Sign in</ion-button
+      >
+    </div>
+  </div>
+</div>

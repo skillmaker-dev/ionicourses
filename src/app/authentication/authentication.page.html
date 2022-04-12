@@ -1,0 +1,29 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <div class="auth-form" center>
+    <ion-col>
+      <ion-button
+        [routerLink]="['/registration']"
+        expand="block"
+        color="primary"
+        >Register</ion-button
+      >
+      <span class="already">Already a user?</span>
+      <ion-button [routerLink]="['/login']" expand="block" color="danger"
+        >Sign In</ion-button
+      >
+      <ion-button
+        expand="block"
+        color="danger"
+        (click)="authService.GoogleAuth()"
+        >Sign In with Google</ion-button
+      >
+    </ion-col>
+  </div>
+</ion-content>

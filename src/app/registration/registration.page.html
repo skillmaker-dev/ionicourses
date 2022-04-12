@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+    <ion-title>Register</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-item lines="full">
+    <ion-label position="floating">Email</ion-label>
+    <ion-input type="text" required #email></ion-input>
+  </ion-item>
+  <ion-item lines="full">
+    <ion-label position="floating">Password</ion-label>
+    <ion-input type="password" required #password></ion-input>
+  </ion-item>
+  <ion-row>
+    <ion-col>
+      <ion-button
+        (click)="authService.SignUp(email.value, password.value)"
+        color="danger"
+        expand="block"
+        >Sign Up</ion-button
+      >
+    </ion-col>
+  </ion-row>
+</ion-content>

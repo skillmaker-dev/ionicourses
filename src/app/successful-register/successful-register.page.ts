@@ -15,4 +15,8 @@ export class SuccessfulRegisterPage implements OnInit {
     this.course = this.route.snapshot.params
   }
 
+  currentDate(): string {
+    return new Date().toDateString()
+  }
+
 }

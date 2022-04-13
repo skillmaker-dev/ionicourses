@@ -1,5 +1,7 @@
 {
   "name": "Ionicourses",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

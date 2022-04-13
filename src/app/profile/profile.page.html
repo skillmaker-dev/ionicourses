@@ -9,10 +9,10 @@
 
 <ion-content>
   <div class="user-data">
-    <ion-avatar slot="start" *ngIf="authService.userData.photoURL != ''">
+    <ion-avatar slot="start" *ngIf="authService.userData.photoURL != null">
       <img src="{{authService.userData.photoURL}}" />
     </ion-avatar>
-    <h1>User Data</h1>
+    <h1>{{authService.userData.displayName}}</h1>
     <p>ID: <strong>{{authService.userData.uid}}</strong></p>
     <p>Email: <strong>{{authService.userData.email}}</strong></p>
     <p>

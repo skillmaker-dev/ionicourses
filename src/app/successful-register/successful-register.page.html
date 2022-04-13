@@ -6,9 +6,11 @@
       </ion-card-header>
 
       <ion-card-content
-        >Hi {{authService.userData.displayName}} You have succesfully subscribed
-        to course : {{course.title}} for {{course.price}} $</ion-card-content
-      >
+        >Hi <b>{{authService.userData.displayName}}</b> You have succesfully
+        subscribed to course : {{course.title}} for <b>{{course.price}}</b> $
+        <br />
+        <b>Date : {{currentDate()}}</b>
+      </ion-card-content>
       <ion-button [routerLink]="['/home']" style="margin: 1rem" expand="block">
         Return to courses list
       </ion-button>

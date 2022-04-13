@@ -31,9 +31,9 @@ export class AuthService {
       }
     });
   }
-  SignIn(email: string, password: string) {
+  SignIn(email: any, password: any) {
     if (email.length == 0 || password.length == 0) {
-      this.showAlert("Please fill all fields")
+      this.showAlert("Please fill all fields", "Error")
       return
     }
 
@@ -46,13 +46,13 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        this.showAlert(error.message)
+        this.showAlert(error.message, "Error")
 
       });
   }
-  SignUp(email: string, password: string) {
+  SignUp(email: any, password: any) {
     if (email.length == 0 || password.length == 0) {
-      this.showAlert("Please fill all fields")
+      this.showAlert("Please fill all fields", "Error")
       return
     }
     return this.fireauth
@@ -64,7 +64,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        this.showAlert(error.message)
+        this.showAlert(error.message, "Error")
 
       });
   }
@@ -97,7 +97,24 @@ export class AuthService {
     });
   }
 
+  FacebookAuth() {
+    return this.AuthLogin(new auth.FacebookAuthProvider()).then((res: any) => {
+      if (res) {
+        this.router.navigate(['home']);
+      }
+    });
+  }
 
+  ResetPassword(passwordResetEmail: any) {
+    return this.fireauth
+      .sendPasswordResetEmail(passwordResetEmail)
+      .then(() => {
+        this.showAlert('Password reset email sent, Please check your inbox.', "Success");
+      })
+      .catch((error) => {
+        this.showAlert(error.message, "Error")
+      });
+  }
   AuthLogin(provider: any) {
     return this.fireauth
       .signInWithPopup(provider)
@@ -108,7 +125,7 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        this.showAlert(error.message)
+        this.showAlert(error.message, "Error")
 
       });
   }
@@ -129,9 +146,9 @@ export class AuthService {
     });
   }
 
-  async showAlert(message: string) {
+  async showAlert(message: string, header: string) {
     const alert = await alertController.create({
-      header: 'Error',
+      header: header,
       message: message.split('.')[0],
       buttons: ['Ok'],
     });

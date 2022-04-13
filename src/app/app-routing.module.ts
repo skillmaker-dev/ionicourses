@@ -43,6 +43,10 @@ const routes: Routes = [
     path: 'successful-register',
     loadChildren: () => import('./successful-register/successful-register.module').then( m => m.SuccessfulRegisterPageModule)
   },
+  {
+    path: 'reset-password',
+    loadChildren: () => import('./reset-password/reset-password.module').then( m => m.ResetPasswordPageModule)
+  },
 ];
 
 @NgModule({

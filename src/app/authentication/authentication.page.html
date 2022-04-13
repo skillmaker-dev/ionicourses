@@ -19,6 +19,14 @@
         <ion-icon name="logo-google" slot="start"></ion-icon>
         Sign In with Google</ion-button
       >
+      <ion-button
+        expand="block"
+        color="primary"
+        (click)="authService.FacebookAuth()"
+      >
+        <ion-icon name="logo-facebook" slot="start"></ion-icon>
+        Sign In with Facebook</ion-button
+      >
     </ion-col>
   </div>
 </ion-content>

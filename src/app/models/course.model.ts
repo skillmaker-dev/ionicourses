@@ -4,5 +4,7 @@ export interface Course {
     price: number,
     author: string,
     date: string,
-    imageUrl: string
+    imageUrl: string,
+    description: string
+    prerequisites: string[]
 }

@@ -4,6 +4,7 @@ import { collection, getDocs } from 'firebase/firestore';
 import { db } from 'src/environments/environment';
 import { Course } from '../models/course.model';
 import { AuthService } from '../shared/services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './home.page.html',
@@ -12,7 +13,9 @@ import { AuthService } from '../shared/services/auth.service';
 export class HomePage {
 
   courses: Course[]
-  constructor(private menu: MenuController, public authService: AuthService) {
+
+  constructor(private menu: MenuController, public authService: AuthService, public router: Router) {
+
     getDocs(collection(db, 'courses')).then((snapshot) => {
       const allCourses = [];
       snapshot.docs.forEach((doc) => {
@@ -22,7 +25,9 @@ export class HomePage {
     })
   }
 
-
+  moreDetails(course: Course): void {
+    this.router.navigate(['/details', course]);
+  }
 
   openFirst() {
     this.menu.enable(true, 'first');

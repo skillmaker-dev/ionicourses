@@ -7,6 +7,7 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
+import { FacebookAuthProvider } from 'firebase/auth';
 @Injectable({
   providedIn: 'root',
 })
@@ -58,7 +59,7 @@ export class AuthService {
   SignOut() {
     return this.afAuth.signOut().then(() => {
       localStorage.removeItem('user');
-      this.router.navigate(['login']);
+      this.router.navigate(['authentication']);
     });
   }
 
@@ -83,6 +84,7 @@ export class AuthService {
     });
   }
 
+
   AuthLogin(provider: any) {
     return this.afAuth
       .signInWithPopup(provider)
@@ -105,6 +107,7 @@ export class AuthService {
       uid: user.uid,
       email: user.email,
       displayName: user.displayName,
+      photoURL: user.photoURL,
       emailVerified: user.emailVerified,
     };
     return userRef.set(userData, {

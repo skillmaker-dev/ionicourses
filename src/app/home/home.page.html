@@ -31,18 +31,22 @@
       </ion-toolbar>
     </ion-header>
     <ion-content class="ion-padding">
-      <ion-card>
-        <img src="C" style="height: 200px; width: 100%; object-fit: cover" />
+      <ion-card *ngFor="let course of courses">
+        <img
+          src="{{course.imageUrl}}"
+          style="height: 200px; width: 100%; object-fit: cover"
+        />
         <ion-card-header>
-          <ion-card-title>Course Title</ion-card-title>
+          <ion-card-title>{{course.title}}</ion-card-title>
+          <ion-card-subtitle>Created by: {{course.author}}</ion-card-subtitle>
         </ion-card-header>
 
-        <ion-card-content>
-          Keep close to Nature's heart... and break clear away, once in awhile,
-          and climb a mountain or spend a week in the woods. Wash your spirit
-          clean.
-        </ion-card-content>
-        <ion-button style="margin: 1rem" expand="block">
+        <ion-card-content> {{course.description}} </ion-card-content>
+        <ion-button
+          style="margin: 1rem"
+          expand="block"
+          (click)="moreDetails(course)"
+        >
           More details
         </ion-button>
       </ion-card>

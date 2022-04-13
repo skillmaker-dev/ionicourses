@@ -15,14 +15,16 @@
         >Register</ion-button
       >
       <span class="already">Already a user?</span>
-      <ion-button [routerLink]="['/login']" expand="block" color="danger"
-        >Sign In</ion-button
+      <ion-button [routerLink]="['/login']" expand="block" color="success">
+        Sign In</ion-button
       >
       <ion-button
         expand="block"
         color="danger"
         (click)="authService.GoogleAuth()"
-        >Sign In with Google</ion-button
+      >
+        <ion-icon name="logo-google" slot="start"></ion-icon>
+        Sign In with Google</ion-button
       >
     </ion-col>
   </div>

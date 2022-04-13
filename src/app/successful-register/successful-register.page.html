@@ -1,0 +1,17 @@
+<ion-content>
+  <div class="center">
+    <ion-card mode="ios" color="success">
+      <ion-card-header>
+        <ion-card-title>Success !</ion-card-title>
+      </ion-card-header>
+
+      <ion-card-content
+        >Hi {{authService.userData.displayName}} You have succesfully subscribed
+        to course : {{course.title}} for {{course.price}} $</ion-card-content
+      >
+      <ion-button [routerLink]="['/home']" style="margin: 1rem" expand="block">
+        Return to courses list
+      </ion-button>
+    </ion-card>
+  </div>
+</ion-content>

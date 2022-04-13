@@ -7,20 +7,20 @@ import {
   AngularFirestoreDocument,
 } from '@angular/fire/compat/firestore';
 import { Router } from '@angular/router';
-import { FacebookAuthProvider } from 'firebase/auth';
+import { alertController } from '@ionic/core';
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
   userData: any;
   constructor(
-    public afs: AngularFirestore,
-    public afAuth: AngularFireAuth,
+    public firestore: AngularFirestore,
+    public fireauth: AngularFireAuth,
     public router: Router,
     public ngZone: NgZone
   ) {
 
-    this.afAuth.authState.subscribe((user) => {
+    this.fireauth.authState.subscribe((user) => {
       if (user) {
         this.userData = user;
         localStorage.setItem('user', JSON.stringify(this.userData));
@@ -31,8 +31,13 @@ export class AuthService {
       }
     });
   }
-  SignIn(email: any, password: any) {
-    return this.afAuth
+  SignIn(email: string, password: string) {
+    if (email.length == 0 || password.length == 0) {
+      this.showAlert("Please fill all fields")
+      return
+    }
+
+    return this.fireauth
       .signInWithEmailAndPassword(email, password)
       .then((result) => {
         this.ngZone.run(() => {
@@ -41,30 +46,38 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.showAlert(error.message)
+
       });
   }
-  SignUp(email: any, password: any) {
-    return this.afAuth
+  SignUp(email: string, password: string) {
+    if (email.length == 0 || password.length == 0) {
+      this.showAlert("Please fill all fields")
+      return
+    }
+    return this.fireauth
       .createUserWithEmailAndPassword(email, password)
       .then((result) => {
+
         this.SendVerificationMail();
+
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error.message);
+        this.showAlert(error.message)
+
       });
   }
 
   SignOut() {
-    return this.afAuth.signOut().then(() => {
+    return this.fireauth.signOut().then(() => {
       localStorage.removeItem('user');
       this.router.navigate(['authentication']);
     });
   }
 
   SendVerificationMail() {
-    return this.afAuth.currentUser
+    return this.fireauth.currentUser
       .then((u: any) => u.sendEmailVerification())
       .then(() => {
         this.router.navigate(['verify-email']);
@@ -86,7 +99,7 @@ export class AuthService {
 
 
   AuthLogin(provider: any) {
-    return this.afAuth
+    return this.fireauth
       .signInWithPopup(provider)
       .then((result) => {
         this.ngZone.run(() => {
@@ -95,12 +108,13 @@ export class AuthService {
         this.SetUserData(result.user);
       })
       .catch((error) => {
-        window.alert(error);
+        this.showAlert(error.message)
+
       });
   }
 
   SetUserData(user: any) {
-    const userRef: AngularFirestoreDocument<any> = this.afs.doc(
+    const userRef: AngularFirestoreDocument<any> = this.firestore.doc(
       `users/${user.uid}`
     );
     const userData: User = {
@@ -115,5 +129,13 @@ export class AuthService {
     });
   }
 
+  async showAlert(message: string) {
+    const alert = await alertController.create({
+      header: 'Error',
+      message: message.split('.')[0],
+      buttons: ['Ok'],
+    });
 
+    await alert.present();
+  }
 }

@@ -40,7 +40,11 @@
       <ion-chip color="primary" style="margin-left: 1rem">
         <ion-label>{{course.price}} $</ion-label>
       </ion-chip>
-      <ion-button color="success" style="margin: 1rem" expand="block"
+      <ion-button
+        color="success"
+        style="margin: 1rem"
+        expand="block"
+        (click)="moreDetails(course)"
         >Subscribe</ion-button
       >
     </ion-card>

@@ -13,31 +13,35 @@ const routes: Routes = [
   },
   {
     path: 'authentication',
-    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationPageModule)
+    loadChildren: () => import('./authentication/authentication.module').then(m => m.AuthenticationPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'login',
-    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule)
+    loadChildren: () => import('./login/login.module').then(m => m.LoginPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'registration',
-    loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationPageModule)
+    loadChildren: () => import('./registration/registration.module').then(m => m.RegistrationPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'verify-email',
-    loadChildren: () => import('./verify-email/verify-email.module').then(m => m.VerifyEmailPageModule)
+    loadChildren: () => import('./verify-email/verify-email.module').then(m => m.VerifyEmailPageModule), canActivate: [AuthGuard]
   },
   {
     path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule), canActivate: [AuthGuard]
+    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
   },
   {
     path: 'profile',
-    loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule), canActivate: [AuthGuard]
+    loadChildren: () => import('./profile/profile.module').then(m => m.ProfilePageModule)
   },
   {
     path: 'details',
-    loadChildren: () => import('./details/details.module').then(m => m.DetailsPageModule), canActivate: [AuthGuard]
+    loadChildren: () => import('./details/details.module').then(m => m.DetailsPageModule)
+  },
+  {
+    path: 'successful-register',
+    loadChildren: () => import('./successful-register/successful-register.module').then( m => m.SuccessfulRegisterPageModule)
   },
 ];
 

@@ -18,6 +18,10 @@
     <!-- add to homescreen for ios -->
     <meta name="apple-mobile-web-app-capable" content="yes" />
     <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <script type="module">
+      import { alertController } from "https://cdn.jsdelivr.net/npm/@ionic/core/dist/ionic/index.esm.js";
+      window.alertController = alertController;
+    </script>
   </head>
 
   <body>

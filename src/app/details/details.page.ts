@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { addDoc, collection } from 'firebase/firestore';
+import { db } from 'src/environments/environment';
 import { Course } from '../models/course.model';
 
 @Component({
@@ -16,7 +18,12 @@ export class DetailsPage implements OnInit {
     this.course = this.route.snapshot.params
   }
 
-  moreDetails(course: Course): void {
+  register(course: Course): void {
     this.router.navigate(['/successful-register', course]);
+    let userId = JSON.parse(localStorage.getItem('user')!).uid;
+    addDoc(collection(db, "subscriptions"), {
+      course,
+      userId
+    })
   }
 }

@@ -1,0 +1,19 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-title>subscriptions</ion-title>
+    <ion-buttons slot="start">
+      <ion-back-button></ion-back-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card *ngFor="let course of courses">
+    <ion-card-header>
+      <ion-card-title>{{course.title}}</ion-card-title>
+      <ion-card-subtitle>Created by: {{course.author}}</ion-card-subtitle>
+    </ion-card-header>
+
+    <ion-card-content> {{course.description}} </ion-card-content>
+  </ion-card>
+</ion-content>

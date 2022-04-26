@@ -6,7 +6,7 @@
       </ion-card-header>
 
       <ion-card-content
-        >Hi <b>{{authService.userData.displayName}}</b> You have succesfully
+        >Hi <b>{{authService.userData?.displayName}}</b> You have succesfully
         subscribed to course : {{course.title}} for <b>{{course.price}}</b> $
         <br />
         <b>Date : {{currentDate()}}</b>
